@@ -3,8 +3,10 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import HomeSection from '@/components/HomeSection';
+import ServicesSection from '@/components/ServicesSection';
 import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
+import SkillsSection from '@/components/SkillsSection';
 import TechStackSection from '@/components/TechStackSection';
 import PricingSection from '@/components/PricingSection';
 import ClientsSection from '@/components/ClientsSection';
@@ -17,11 +19,13 @@ export default function Home() {
       <Navbar />
       <main>
         <HomeSection />
-        <AboutSection />
+        <ServicesSection />
         <ProjectsSection />
+        <SkillsSection />
+        <AboutSection />
         <TechStackSection />
-        <PricingSection />
-        <ClientsSection />
+        {/* <PricingSection /> */}
+        {/* <ClientsSection /> */}
         <ContactSection />
       </main>
       <Footer />

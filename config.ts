@@ -10,7 +10,7 @@ export interface Project {
 export interface TechStack {
   name: string;
   icon?: string;
-  category: 'frontend' | 'backend' | 'database' | 'tool' | 'other';
+  category: 'frontend' | 'backend' | 'database' | 'tool' | 'other' | 'analytics';
 }
 
 export interface PricingPlan {
@@ -77,7 +77,7 @@ export interface PortfolioConfig {
 
 export const portfolioConfig: PortfolioConfig = {
   developer: {
-    name: "John Doe",
+    name: "",
     tagline: "Full-Stack Developer & Digital Innovator",
     role: "Senior Software Engineer",
     bio: "Passionate about creating scalable, high-performance web applications.",
@@ -98,61 +98,90 @@ export const portfolioConfig: PortfolioConfig = {
     {
       id: "1",
       name: "Zaps Travel",
-      description: "A comprehensive travel booking platform for flights and hotels with integrated payment processing and third-party API connections.",
+      description: "A full-scale travel booking ecosystem enabling users to search, compare, and book flights and hotels in real time. The platform integrates secure payment gateways, third-party travel APIs, and dynamic pricing modules, offering a seamless booking experience with modern UI/UX and optimized backend workflows.",
       technologies: ["React", "Redux", "Node.js", "MongoDB", "Payment Integration", "Third-party APIs"],
     },
     {
       id: "2",
       name: "Appointment Management System (SaaS)",
-      description: "Real-time SaaS appointment scheduling platform with advanced booking management and API integrations.",
+      description: "A cloud-based, real-time appointment scheduling SaaS with advanced calendar management, automated reminders, and multi-user booking capabilities. The system supports API integrations for third-party apps and provides an administrative dashboard for analytics, staff management, and customer insights.",
       technologies: ["React", "Node.js", "Zustand", "PostgreSQL", "API Integrations"],
     },
     {
       id: "3",
       name: "Krew (Multi-Tenant SaaS)",
-      description: "Enterprise-grade multi-tenant SaaS platform with WebSocket support and tenant isolation capabilities.",
+      description: "A robust multi-tenant SaaS architecture built for enterprises, supporting complete tenant isolation, real-time updates via WebSockets, and dynamic workspace creation. The platform includes tenant-specific access control, scalable onboarding, and high-performance data segregation to ensure security and seamless collaboration.",
       technologies: ["React", "Node.js", "WebSockets", "MongoDB"],
     },
     {
       id: "4",
       name: "School Management System (SaaS)",
-      description: "Comprehensive ERP solution for educational institutions with role-based access, attendance tracking, and reporting.",
+      description: "A feature-rich ERP platform for educational institutions, offering role-based access, attendance automation, exam & grade management, fee tracking, and performance analytics. The system centralizes school operations with a user-friendly interface and scalable backend optimized for SaaS deployment.",
       technologies: ["React", "Node.js", "Zustand", "PostgreSQL"],
     },
     {
       id: "5",
       name: "Jua Hotel",
-      description: "Modern hotel booking platform with intuitive user interface and seamless reservation management.",
+      description: "A modern and intuitive hotel booking platform designed for smooth reservation flow. It includes room availability management, user-friendly search filters, and interactive booking steps using modular UI components and custom React hooks for enhanced maintainability and performance.",
       technologies: ["React", "Redux", "Custom Hooks"],
     },
     {
       id: "6",
       name: "Facility Management System (SaaS)",
-      description: "Advanced SaaS platform featuring 3D facility visualization and comprehensive management tools.",
+      description: "An advanced SaaS solution for facility operations featuring 3D interactive space visualization using Three.js. The platform enables asset tracking, maintenance scheduling, resource allocation, and real-time monitoring, giving organizations a holistic view of their facilities through an immersive UI.",
       technologies: ["React", "Three.js", "Zustand"],
     },
     {
       id: "7",
       name: "FATCA/CRS File Upload System",
-      description: "Secure file upload and validation system for FATCA/CRS compliance with robust security measures.",
+      description: "A secure and compliance-focused document processing system for FATCA/CRS filings. It ensures encrypted file upload, automated validation, format standardization, and real-time error reporting. Built to meet regulatory standards, the system improves accuracy and speeds up compliance workflows.",
       technologies: ["React"],
     }
   ],
   techStack: [
     { name: "React", category: "frontend" },
     { name: "Next.js", category: "frontend" },
-    { name: "Node.js", category: "backend" },
+    { name: "TypeScript", category: "frontend" },
+    { name: "Material UI", category: "frontend" },
+    { name: "TailwindCSS", category: "frontend" },
+    { name: "Zustand", category: "frontend" },
+    { name: "Redux", category: "frontend" },
+    { name: "Three.js", category: "frontend" },
+
     { name: "MongoDB", category: "database" },
     { name: "PostgreSQL", category: "database" },
-    { name: "Zustand", category: "tool" },
-    { name: "Redux", category: "tool" },
-    { name: "WebSocket", category: "tool" },
-    { name: "Three.js", category: "tool" },
+    { name: "Redis", category: "database" },
+    
+    { name: "Node.js", category: "backend" },
     { name: "Express", category: "backend" },
+    { name: "WebSocket", category: "backend" },
     { name: "REST API", category: "backend" },
+    { name: "GraphQL", category: "backend" },
+    { name: "Microservices", category: "backend" },
+    { name: "Python", category: "backend" },
+    { name: "Django", category: "backend" },
+
     { name: "API Integration", category: "other" },
-    { name: "TypeScript", category: "frontend" },
-    { name: "Material UI", category: "frontend" }
+    { name: "Agile Methodology", category: "other" },
+    { name: "Payment Integration", category: "other" },
+
+    { name: "Analytics", category: "analytics" },
+    { name: "Reporting", category: "analytics" },
+    { name: "Dashboards", category: "analytics" },
+    { name: "Data Visualization", category: "analytics" },
+    
+    { name: "Git", category: "tool" },
+    { name: "Postman", category: "tool" },
+    { name: "Docker", category: "tool" },
+    { name: "Firebase", category: "tool" },
+    { name: "AWS", category: "tool" },
+    { name: "GCP", category: "tool" },
+    { name: "GitLab", category: "tool" },
+    { name: "GitHub", category: "tool" },
+    { name: "Bitbucket", category: "tool" },
+    { name: "Jira", category: "tool" },
+    { name: "Power BI", category: "tool" },
+    
   ],
   services: [
     "Web Development",

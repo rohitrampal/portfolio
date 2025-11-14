@@ -24,6 +24,7 @@ export default function TechStackSection() {
     database: portfolioConfig.techStack.filter((t) => t.category === 'database'),
     tool: portfolioConfig.techStack.filter((t) => t.category === 'tool'),
     other: portfolioConfig.techStack.filter((t) => t.category === 'other'),
+    analytics: portfolioConfig.techStack.filter((t) => t.category === 'analytics'),
   };
 
   return (

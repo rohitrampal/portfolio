@@ -19,11 +19,10 @@ import { Locale } from '@/lib/i18n';
 
 const sections = [
   { id: 'home', key: 'home' },
-  { id: 'about', key: 'about' },
+  { id: 'services', key: 'services' },
   { id: 'projects', key: 'projects' },
-  { id: 'tech-stack', key: 'techStack' },
-  { id: 'pricing', key: 'pricing' },
-  { id: 'clients', key: 'clients' },
+  { id: 'skills', key: 'skills' },
+  { id: 'about', key: 'about' },
   { id: 'contact', key: 'contact' },
 ];
 
@@ -114,7 +113,7 @@ export default function Navbar() {
               </Button>
             ))}
           </Box>
-          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', color: mode === 'dark' ? 'white' : 'black'   }}>
             <IconButton onClick={handleLanguageMenuOpen} color="inherit">
               <Language />
             </IconButton>
@@ -123,18 +122,120 @@ export default function Navbar() {
               open={Boolean(anchorEl)}
               onClose={handleLanguageMenuClose}
             >
-              <MenuItem
-                onClick={() => handleLanguageChange('en')}
-                selected={locale === 'en'}
-              >
-                English
-              </MenuItem>
-              <MenuItem
-                onClick={() => handleLanguageChange('fr')}
-                selected={locale === 'fr'}
-              >
-                Français
-              </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('en')}
+              selected={locale === 'en'}
+            >
+              English
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('fr')}
+              selected={locale === 'fr'}
+            >
+              Français
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('ru')}
+              selected={locale === 'ru'}
+            >
+              Русский
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('ar')}
+              selected={locale === 'ar'}
+            >
+              العربية
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('ne-NP')}
+              selected={locale === 'ne-NP'}
+            >
+              नेपाली
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('az')}
+              selected={locale === 'az'}
+            >
+              Azərbaycan
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('zh-CN')}
+              selected={locale === 'zh-CN'}
+            >
+              中文
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('nl')}
+              selected={locale === 'nl'}
+            >
+              Nederlands
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('gu')}
+              selected={locale === 'gu'}
+            >
+              ગુજરાતી
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('hi')}
+              selected={locale === 'hi'}
+            >
+              हिन्दी
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('id')}
+              selected={locale === 'id'}
+            >
+              Bahasa Indonesia
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('ga')}
+              selected={locale === 'ga'}
+            >
+              Gaeilge
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('ks')}
+              selected={locale === 'ks'}
+            >
+              कॉशुर
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('la')}
+              selected={locale === 'la'}
+            >
+              Latina
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('ml')}
+              selected={locale === 'ml'}
+            >
+              മലയാളം
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('pi')}
+              selected={locale === 'pi'}
+            >
+              पालि
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('sa')}
+              selected={locale === 'sa'}
+            >
+              संस्कृतम्
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('te')}
+              selected={locale === 'te'}
+            >
+              తెలుగు
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleLanguageChange('uz')}
+              selected={locale === 'uz'}
+            >
+              O'zbek
+            </MenuItem>
             </Menu>
             <IconButton onClick={toggleTheme} color="inherit">
               {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
