@@ -121,7 +121,7 @@ export const strings = {
   // Footer
   footer: {
     copyright: '© 2025 Portfolio. All rights reserved.',
-    // builtWith: 'Built with Next.js & Material UI',
+    builtWith: 'Having Fun With Creative Minds',
   },
 };
 
