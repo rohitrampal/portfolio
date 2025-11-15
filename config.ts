@@ -265,12 +265,12 @@ export const portfolioConfig: PortfolioConfig = {
     }
   ],
   contact: {
-    email: "rohitthakurldttechnology@gmail.com",
+    email: "thakurrohit210302@gmail.com",
     phone: "+91 9818000000",
     address: "Chandigarh, India",
     social: {
       linkedin: "https://linkedin.com/in/amishajain14",
-      github: "https://github.com/johndoe",
+      github: "https://github.com/rohitrampal",
       twitter: "https://twitter.com/"
     }
   },

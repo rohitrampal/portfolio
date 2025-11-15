@@ -133,6 +133,7 @@ export default function ContactSection() {
           <Paper elevation={3} sx={{ p: 4 }}>
             <form onSubmit={handleSubmit}>
               <TextField
+                id="contact-name"
                 fullWidth
                 label={t.contact.name}
                 name="name"
@@ -144,6 +145,7 @@ export default function ContactSection() {
                 required
               />
               <TextField
+                id="contact-email"
                 fullWidth
                 label={t.contact.email}
                 name="email"
@@ -156,6 +158,7 @@ export default function ContactSection() {
                 required
               />
               <TextField
+                id="contact-message"
                 fullWidth
                 label={t.contact.message}
                 name="message"
