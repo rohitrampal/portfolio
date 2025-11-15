@@ -4,7 +4,6 @@ import React from 'react';
 import { Box, Container, Typography, Stack, IconButton, Link } from '@mui/material';
 import { LinkedIn, GitHub, Twitter } from '@mui/icons-material';
 import { useLocale } from '@/contexts/LocaleContext';
-import { portfolioConfig } from '@/config';
 
 export default function Footer() {
   const { t } = useLocale();
@@ -17,9 +16,12 @@ export default function Footer() {
         backgroundColor: (theme) =>
           theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.8)' : 'rgba(245, 245, 245, 0.8)',
         borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+        width: '100%',
+        maxWidth: '100vw',
+        overflow: 'hidden',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ width: '100%', px: { xs: 2, sm: 3 } }}>
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
           justifyContent="space-between"
@@ -30,10 +32,10 @@ export default function Footer() {
             {t.footer.copyright}
           </Typography>
           <Stack direction="row" spacing={1}>
-            {portfolioConfig.contact.social.linkedin && (
+            {t.contact.info.social.linkedin && (
               <IconButton
                 component={Link}
-                href={portfolioConfig.contact.social.linkedin}
+                href={t.contact.info.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 color="primary"
@@ -41,10 +43,10 @@ export default function Footer() {
                 <LinkedIn />
               </IconButton>
             )}
-            {portfolioConfig.contact.social.github && (
+            {t.contact.info.social.github && (
               <IconButton
                 component={Link}
-                href={portfolioConfig.contact.social.github}
+                href={t.contact.info.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 color="primary"
@@ -52,10 +54,10 @@ export default function Footer() {
                 <GitHub />
               </IconButton>
             )}
-            {portfolioConfig.contact.social.twitter && (
+            {t.contact.info.social.twitter && (
               <IconButton
                 component={Link}
-                href={portfolioConfig.contact.social.twitter}
+                href={t.contact.info.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
                 color="primary"

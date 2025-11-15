@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Box, Container, Typography, Button, Stack } from '@mui/material';
 import { useLocale } from '@/contexts/LocaleContext';
-import { portfolioConfig } from '@/config';
 import { gsap } from 'gsap';
 import ThreeBackground from './ThreeBackground';
 
@@ -70,7 +69,7 @@ export default function HomeSection() {
       id="home"
       ref={heroRef}
       sx={{
-        minHeight: '100vh',
+        minHeight: { xs: 'calc(100vh - 64px)', sm: '100vh' },
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -79,24 +78,51 @@ export default function HomeSection() {
           theme.palette.mode === 'dark'
             ? 'linear-gradient(135deg, #121212 0%, #1e1e1e 100%)'
             : 'linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%)',
-        pt: 10,
-        pb: 5,
-        overflow: 'hidden',
+        pt: { xs: 8, sm: 10, md: 12 },
+        pb: { xs: 4, sm: 5, md: 6 },
+        overflowX: 'hidden',
+        overflowY: 'auto',
+        width: '100%',
+        maxWidth: '100vw',
+        boxSizing: 'border-box',
       }}
     >
       <ThreeBackground />
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Box sx={{ textAlign: 'center' }}>
+      <Container 
+        maxWidth="lg" 
+        sx={{ 
+          position: 'relative', 
+          zIndex: 1, 
+          width: '100%',
+          maxWidth: '100%',
+          px: { xs: 2, sm: 3, md: 4, lg: 6 },
+          boxSizing: 'border-box',
+        }}
+      >
+        <Box sx={{ 
+          textAlign: 'center', 
+          width: '100%',
+          maxWidth: '100%',
+          boxSizing: 'border-box',
+        }}>
           <Typography
             ref={nameRef}
             variant="h1"
             component="h1"
             sx={{
-              fontSize: { xs: '4rem', sm: '6rem', md: '8rem', lg: '10rem' },
+              fontSize: { xs: '1.75rem', sm: '3.5rem', md: '5rem', lg: '7rem', xl: '8rem' },
               fontWeight: 700,
-              letterSpacing: { xs: '-0.02em', md: '-0.04em' },
-              lineHeight: 0.9,
-              mb: 2,
+              letterSpacing: { xs: '-0.005em', sm: '-0.02em', md: '-0.04em' },
+              lineHeight: { xs: 1.2, sm: 0.95, md: 0.9 },
+              mb: { xs: 1.5, sm: 2, md: 2.5 },
+              wordBreak: 'break-word',
+              overflowWrap: 'break-word',
+              hyphens: 'auto',
+              width: '100%',
+              maxWidth: '100%',
+              boxSizing: 'border-box',
+              whiteSpace: 'normal',
+              px: { xs: 1, sm: 2, md: 0 },
               background: (theme) =>
                 theme.palette.mode === 'dark'
                   ? 'linear-gradient(135deg, #fff 0%, #90caf9 100%)'
@@ -106,7 +132,7 @@ export default function HomeSection() {
               backgroundClip: 'text',
             }}
           >
-            {portfolioConfig.developer.name.toUpperCase()}
+            {t.home.name.toUpperCase() || 'PORTFOLIO'}
           </Typography>
 
           <Typography
@@ -114,11 +140,19 @@ export default function HomeSection() {
             variant="h4"
             component="h2"
             sx={{
-              fontSize: { xs: '1.2rem', md: '1.5rem' },
+              fontSize: { xs: '0.95rem', sm: '1.25rem', md: '1.5rem' },
               fontWeight: 400,
               color: 'text.secondary',
-              mb: 3,
-              letterSpacing: '0.1em',
+              mb: { xs: 2, sm: 2.5, md: 3 },
+              letterSpacing: { xs: '0.03em', sm: '0.08em', md: '0.1em' },
+              px: { xs: 1.5, sm: 2, md: 0 },
+              lineHeight: { xs: 1.5, sm: 1.4, md: 1.3 },
+              wordBreak: 'break-word',
+              overflowWrap: 'break-word',
+              whiteSpace: 'normal',
+              width: '100%',
+              maxWidth: '100%',
+              boxSizing: 'border-box',
             }}
           >
             {t.home.tagline}
@@ -128,12 +162,19 @@ export default function HomeSection() {
             ref={descriptionRef}
             variant="body1"
             sx={{
-              fontSize: { xs: '1rem', md: '1.1rem' },
+              fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
               color: 'text.secondary',
-              mb: 6,
-              maxWidth: '700px',
+              mb: { xs: 4, sm: 5, md: 6 },
+              width: '100%',
+              maxWidth: { xs: '100%', sm: '600px', md: '700px' },
               mx: 'auto',
-              lineHeight: 1.8,
+              lineHeight: { xs: 1.7, sm: 1.75, md: 1.8 },
+              px: { xs: 1.5, sm: 2, md: 0 },
+              wordBreak: 'break-word',
+              overflowWrap: 'break-word',
+              whiteSpace: 'normal',
+              textAlign: { xs: 'left', sm: 'center' },
+              boxSizing: 'border-box',
             }}
           >
             {t.home.description}
@@ -142,13 +183,20 @@ export default function HomeSection() {
           <Stack
             ref={buttonRef}
             direction={{ xs: 'column', sm: 'row' }}
-            spacing={2}
+            spacing={{ xs: 2.5, sm: 2 }}
+            alignItems="center"
             justifyContent="center"
-            sx={{ mt: 4 }}
+            sx={{ 
+              mt: { xs: 3, sm: 4, md: 5 },
+              width: '100%',
+              maxWidth: '100%',
+              boxSizing: 'border-box',
+            }}
           >
             <Button
               variant="contained"
               size="large"
+              fullWidth={false}
               onClick={() => {
                 const element = document.getElementById('contact');
                 if (element) {
@@ -156,13 +204,17 @@ export default function HomeSection() {
                 }
               }}
               sx={{
-                px: 5,
-                py: 1.8,
-                fontSize: '1.1rem',
+                px: { xs: 4, sm: 5, md: 6 },
+                py: { xs: 1.5, sm: 1.8, md: 2 },
+                fontSize: { xs: '0.95rem', sm: '1rem', md: '1.1rem' },
                 textTransform: 'uppercase',
-                letterSpacing: '0.1em',
+                letterSpacing: { xs: '0.08em', sm: '0.1em' },
                 fontWeight: 600,
-                borderRadius: 0,
+                borderRadius: { xs: 1, sm: 0 },
+                minWidth: { xs: '200px', sm: 'auto' },
+                width: { xs: '100%', sm: 'auto' },
+                maxWidth: { xs: '100%', sm: 'none' },
+                boxSizing: 'border-box',
                 '&:hover': {
                   transform: 'translateY(-2px)',
                 },
@@ -175,33 +227,42 @@ export default function HomeSection() {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 2,
-                mt: { xs: 2, sm: 0 },
+                gap: { xs: 1.5, sm: 2 },
                 justifyContent: 'center',
+                flexWrap: 'wrap',
+                width: { xs: '100%', sm: 'auto' },
+                maxWidth: '100%',
+                boxSizing: 'border-box',
               }}
             >
               <Typography
                 variant="body2"
                 sx={{
                   color: 'text.secondary',
-                  fontSize: '0.9rem',
+                  fontSize: { xs: '0.8rem', sm: '0.9rem', md: '0.95rem' },
+                  whiteSpace: { xs: 'normal', sm: 'nowrap' },
+                  wordBreak: { xs: 'break-word', sm: 'normal' },
+                  textAlign: 'center',
                 }}
               >
                 {t.home.availableForWork}
               </Typography>
               <Box
                 sx={{
-                  width: 8,
-                  height: 8,
+                  width: { xs: 7, sm: 8 },
+                  height: { xs: 7, sm: 8 },
                   borderRadius: '50%',
                   backgroundColor: 'success.main',
                   animation: 'pulse 2s infinite',
+                  flexShrink: 0,
                   '@keyframes pulse': {
                     '0%, 100%': {
                       opacity: 1,
+                      transform: 'scale(1)',
                     },
                     '50%': {
-                      opacity: 0.5,
+                      opacity: 0.6,
+                      transform: 'scale(1.1)',
                     },
                   },
                 }}

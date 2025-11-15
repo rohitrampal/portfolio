@@ -66,9 +66,12 @@ export default function ServicesSection() {
         position: 'relative',
         backgroundColor: (theme) =>
           theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.5)' : 'rgba(255, 255, 255, 0.5)',
+        width: '100%',
+        maxWidth: '100vw',
+        overflow: 'hidden',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ width: '100%', px: { xs: 2, sm: 3 } }}>
         <Box ref={titleRef} sx={{ mb: 8 }}>
           <Typography
             variant="h2"

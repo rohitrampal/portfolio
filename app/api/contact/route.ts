@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { portfolioConfig } from "@/config";
 
 export async function POST(request: NextRequest) {
   try {
@@ -29,8 +28,7 @@ export async function POST(request: NextRequest) {
     const smtpPort = parseInt(process.env.SMTP_PORT || "587");
     const smtpUser = process.env.SMTP_USER; // Your email (e.g., yourname@gmail.com)
     const smtpPassword = process.env.SMTP_PASSWORD; // Your email password or app password
-    const recipientEmail =
-      process.env.CONTACT_EMAIL || portfolioConfig.contact.email;
+    const recipientEmail = process.env.CONTACT_EMAIL || "thakurrohit210302@gmail.com";
 
     // Check if email credentials are configured
     if (!smtpUser || !smtpPassword) {

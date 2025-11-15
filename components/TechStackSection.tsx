@@ -13,18 +13,17 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useLocale } from '@/contexts/LocaleContext';
-import { portfolioConfig } from '@/config';
 
 export default function TechStackSection() {
   const { t } = useLocale();
 
   const categories = {
-    frontend: portfolioConfig.techStack.filter((t) => t.category === 'frontend'),
-    backend: portfolioConfig.techStack.filter((t) => t.category === 'backend'),
-    database: portfolioConfig.techStack.filter((t) => t.category === 'database'),
-    tool: portfolioConfig.techStack.filter((t) => t.category === 'tool'),
-    other: portfolioConfig.techStack.filter((t) => t.category === 'other'),
-    analytics: portfolioConfig.techStack.filter((t) => t.category === 'analytics'),
+    frontend: t.techStack.items.filter((item) => item.category === 'frontend'),
+    backend: t.techStack.items.filter((item) => item.category === 'backend'),
+    database: t.techStack.items.filter((item) => item.category === 'database'),
+    tool: t.techStack.items.filter((item) => item.category === 'tool'),
+    other: t.techStack.items.filter((item) => item.category === 'other'),
+    analytics: t.techStack.items.filter((item) => item.category === 'analytics'),
   };
 
   return (
@@ -34,9 +33,12 @@ export default function TechStackSection() {
         py: 10,
         backgroundColor: (theme) =>
           theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.5)' : 'rgba(245, 245, 245, 0.5)',
+        width: '100%',
+        maxWidth: '100vw',
+        overflow: 'hidden',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ width: '100%', px: { xs: 2, sm: 3 } }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +110,7 @@ export default function TechStackSection() {
           </Typography>
 
           <Grid container spacing={3}>
-            {portfolioConfig.services.map((service, index) => (
+            {t.techStack.servicesList.map((service, index) => (
               <Grid item xs={12} sm={6} md={4} key={service}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}

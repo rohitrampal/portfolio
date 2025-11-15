@@ -9,8 +9,15 @@ import {
   Box,
   Menu,
   MenuItem,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  useMediaQuery,
+  useTheme as useMuiTheme,
 } from '@mui/material';
-import { Brightness4, Brightness7, Language } from '@mui/icons-material';
+import { Brightness4, Brightness7, Language, Menu as MenuIcon } from '@mui/icons-material';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLocale } from '@/contexts/LocaleContext';
 import { Locale } from '@/lib/i18n';
@@ -30,6 +37,9 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const muiTheme = useMuiTheme();
+  const isMobile = useMediaQuery(muiTheme.breakpoints.down('md'));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,6 +107,7 @@ export default function Navbar() {
         behavior: 'smooth',
       });
     }
+    setMobileMenuOpen(false);
   };
 
   const handleLanguageMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -113,65 +124,87 @@ export default function Navbar() {
   };
 
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        backgroundColor: (theme) =>
-          theme.palette.mode === 'dark' 
-            ? scrolled 
-              ? 'rgba(18, 18, 18, 0.95)' 
-              : 'rgba(18, 18, 18, 0.9)'
-            : scrolled
-              ? 'rgba(255, 255, 255, 0.95)'
-              : 'rgba(255, 255, 255, 0.9)',
-        backdropFilter: 'blur(20px)',
-        boxShadow: scrolled ? 4 : 1,
-        transition: 'all 0.3s ease',
-        zIndex: 1300,
-      }}
-    >
-      <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
-        <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-          {sections.map((section) => (
-            <Button
-              key={section.id}
-              onClick={() => handleNavClick(section.id)}
-              sx={{
-                color: activeSection === section.id ? 'primary.main' : 'text.primary',
-                fontWeight: activeSection === section.id ? 700 : 400,
-                fontSize: '0.95rem',
-                textTransform: 'none',
-                position: 'relative',
-                px: 2,
-                py: 1,
-                transition: 'all 0.3s ease',
-                '&::after': {
-                  content: '""',
-                  position: 'absolute',
-                  bottom: 0,
-                  left: '50%',
-                  transform: activeSection === section.id ? 'translateX(-50%) scaleX(1)' : 'translateX(-50%) scaleX(0)',
-                  width: '60%',
-                  height: '2px',
-                  backgroundColor: 'primary.main',
-                  transition: 'transform 0.3s ease',
-                },
-                '&:hover': {
-                  color: 'primary.main',
-                  backgroundColor: 'transparent',
-                  '&::after': {
-                    transform: 'translateX(-50%) scaleX(1)',
-                  },
-                },
-              }}
+    <>
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: (theme) =>
+            theme.palette.mode === 'dark' 
+              ? scrolled 
+                ? 'rgba(18, 18, 18, 0.95)' 
+                : 'rgba(18, 18, 18, 0.9)'
+              : scrolled
+                ? 'rgba(255, 255, 255, 0.95)'
+                : 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: 'blur(20px)',
+          boxShadow: scrolled ? 4 : 1,
+          transition: 'all 0.3s ease',
+          zIndex: 1300,
+          width: '100%',
+          maxWidth: '100vw',
+        }}
+      >
+        <Toolbar 
+          sx={{ 
+            justifyContent: 'space-between', 
+            py: 1,
+            px: { xs: 1, sm: 2 },
+            maxWidth: '100%',
+            overflow: 'hidden',
+          }}
+        >
+          {!isMobile ? (
+            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'nowrap' }}>
+              {sections.map((section) => (
+                <Button
+                  key={section.id}
+                  onClick={() => handleNavClick(section.id)}
+                  sx={{
+                    color: activeSection === section.id ? 'primary.main' : 'text.primary',
+                    fontWeight: activeSection === section.id ? 700 : 400,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    position: 'relative',
+                    px: 2,
+                    py: 1,
+                    transition: 'all 0.3s ease',
+                    whiteSpace: 'nowrap',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '50%',
+                      transform: activeSection === section.id ? 'translateX(-50%) scaleX(1)' : 'translateX(-50%) scaleX(0)',
+                      width: '60%',
+                      height: '2px',
+                      backgroundColor: 'primary.main',
+                      transition: 'transform 0.3s ease',
+                    },
+                    '&:hover': {
+                      color: 'primary.main',
+                      backgroundColor: 'transparent',
+                      '&::after': {
+                        transform: 'translateX(-50%) scaleX(1)',
+                      },
+                    },
+                  }}
+                >
+                  {t.nav[section.key as keyof typeof t.nav]}
+                </Button>
+              ))}
+            </Box>
+          ) : (
+            <IconButton
+              onClick={() => setMobileMenuOpen(true)}
+              color="inherit"
+              sx={{ mr: 1 }}
             >
-              {t.nav[section.key as keyof typeof t.nav]}
-            </Button>
-          ))}
-        </Box>
-          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', color: mode === 'dark' ? 'white' : 'black'   }}>
-            <IconButton onClick={handleLanguageMenuOpen} color="inherit">
-              <Language />
+              <MenuIcon />
+            </IconButton>
+          )}
+          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', color: mode === 'dark' ? 'white' : 'black', flexShrink: 0 }}>
+            <IconButton onClick={handleLanguageMenuOpen} color="inherit" size="small">
+              <Language fontSize="small" />
             </IconButton>
             <Menu
               anchorEl={anchorEl}
@@ -293,12 +326,55 @@ export default function Navbar() {
               O'zbek
             </MenuItem>
             </Menu>
-            <IconButton onClick={toggleTheme} color="inherit">
-              {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+            <IconButton onClick={toggleTheme} color="inherit" size="small">
+              {mode === 'dark' ? <Brightness7 fontSize="small" /> : <Brightness4 fontSize="small" />}
             </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
+
+      {/* Mobile Drawer */}
+      <Drawer
+        anchor="left"
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: { xs: '70%', sm: '300px' },
+            maxWidth: '300px',
+          },
+        }}
+      >
+        <Box sx={{ pt: 8 }}>
+          <List>
+            {sections.map((section) => (
+              <ListItem key={section.id} disablePadding>
+                <ListItemButton
+                  onClick={() => handleNavClick(section.id)}
+                  selected={activeSection === section.id}
+                  sx={{
+                    '&.Mui-selected': {
+                      backgroundColor: 'primary.main',
+                      color: 'white',
+                      '&:hover': {
+                        backgroundColor: 'primary.dark',
+                      },
+                    },
+                  }}
+                >
+                  <ListItemText 
+                    primary={t.nav[section.key as keyof typeof t.nav]}
+                    primaryTypographyProps={{
+                      fontWeight: activeSection === section.id ? 700 : 400,
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
+    </>
   );
 }
 

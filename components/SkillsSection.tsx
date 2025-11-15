@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Box, Container, Typography, Grid, Paper, Chip } from '@mui/material';
 import { useLocale } from '@/contexts/LocaleContext';
-import { portfolioConfig } from '@/config';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -66,9 +65,12 @@ export default function SkillsSection() {
         position: 'relative',
         backgroundColor: (theme) =>
           theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.5)' : 'rgba(255, 255, 255, 0.5)',
+        width: '100%',
+        maxWidth: '100vw',
+        overflow: 'hidden',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ width: '100%', px: { xs: 2, sm: 3 } }}>
         <Box ref={titleRef} sx={{ mb: 8, textAlign: 'center' }}>
           <Typography
             variant="h2"

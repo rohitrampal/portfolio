@@ -105,9 +105,12 @@ export default function ContactSection() {
         py: 10,
         backgroundColor: (theme) =>
           theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.3)' : 'rgba(255, 255, 255, 0.5)',
+        width: '100%',
+        maxWidth: '100vw',
+        overflow: 'hidden',
       }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ width: '100%', px: { xs: 2, sm: 3 } }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -15,7 +15,6 @@ import {
 } from '@mui/material';
 import { ArrowBack, ArrowForward, Launch, Code } from '@mui/icons-material';
 import { useLocale } from '@/contexts/LocaleContext';
-import { portfolioConfig } from '@/config';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -28,7 +27,7 @@ export default function ProjectsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const projects = portfolioConfig.projects.slice(0, 6);
+  const projects = t.projects.items.slice(0, 6);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -65,9 +64,12 @@ export default function ProjectsSection() {
         pb: { xs: 5, md: 5 },
         backgroundColor: (theme) =>
           theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.3)' : 'rgba(255, 255, 255, 0.5)',
+        width: '100%',
+        maxWidth: '100vw',
+        overflow: 'hidden',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ width: '100%', px: { xs: 2, sm: 3 } }}>
         <Box ref={titleRef} sx={{ mb: 8 }}>
           <Typography
             variant="h2"
@@ -170,18 +172,21 @@ export default function ProjectsSection() {
             </IconButton>
           </Box>
 
-          <Box sx={{ position: 'relative', minHeight: '550px' }}>
+          <Box sx={{ position: 'relative', minHeight: '550px', overflow: 'hidden', width: '100%' }}>
             {projects.map((project, index) => (
               <Box
                 key={project.id}
                 sx={{
                   position: 'absolute',
                   width: '100%',
+                  maxWidth: '100%',
                   textAlign: 'center',
                   opacity: currentIndex === index ? 1 : 0,
                   transform: `translateX(${(index - currentIndex) * 100}%)`,
                   transition: 'all 0.5s ease',
                   pointerEvents: currentIndex === index ? 'auto' : 'none',
+                  left: 0,
+                  right: 0,
                 }}
               >
                 <Card
@@ -359,7 +364,7 @@ export default function ProjectsSection() {
                           },
                         }}
                       >
-                        View Project
+                        {t.projects.viewProject}
                       </Button>
                     )}
                   </CardContent>

@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Box, Container, Typography, Grid, Chip, Paper } from '@mui/material';
 import { useLocale } from '@/contexts/LocaleContext';
-import { portfolioConfig } from '@/config';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -70,9 +69,12 @@ export default function AboutSection() {
         py: { xs: 10, md: 15 },
         backgroundColor: (theme) =>
           theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.5)' : 'rgba(245, 245, 245, 0.5)',
+        width: '100%',
+        maxWidth: '100vw',
+        overflow: 'hidden',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ width: '100%', px: { xs: 2, sm: 3 } }}>
         <Box ref={titleRef} sx={{ mb: 6, textAlign: 'center' }}>
           <Typography
             variant="h2"
@@ -103,15 +105,16 @@ export default function AboutSection() {
           {t.about.description}
         </Typography>
 
-          <Grid container spacing={3} sx={{ mb: 4, justifyContent: 'center' }}>
-            {portfolioConfig.developer.skills.map((skill, index) => (
+          <Grid container spacing={2} sx={{ mb: 4, justifyContent: 'center', px: { xs: 2, sm: 0 } }}>
+            {t.about.developerSkills.map((skill, index) => (
               <Grid item xs="auto" key={skill}>
                 <Chip
                   label={skill}
                   sx={{
-                    fontSize: '1rem',
+                    fontSize: { xs: '0.875rem', md: '1rem' },
                     py: 2.5,
                     px: 1,
+                    maxWidth: '100%',
                   }}
                   color="primary"
                   variant="outlined"
@@ -130,7 +133,7 @@ export default function AboutSection() {
           </Typography>
 
           <Grid container spacing={3}>
-            {portfolioConfig.about.values.map((value, index) => (
+            {t.about.values.map((value, index) => (
               <Grid item xs={12} sm={6} md={4} key={value}>
                 <Paper
                   ref={(el) => {

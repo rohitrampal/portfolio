@@ -13,7 +13,6 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useLocale } from '@/contexts/LocaleContext';
-import { portfolioConfig } from '@/config';
 
 export default function ClientsSection() {
   const { t } = useLocale();
@@ -51,7 +50,7 @@ export default function ClientsSection() {
           </Typography>
 
           <Grid container spacing={4}>
-            {portfolioConfig.clients.map((client, index) => (
+            {t.clients.items.map((client, index) => (
               <Grid item xs={12} md={6} key={client.id}>
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}

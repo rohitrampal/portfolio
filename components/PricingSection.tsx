@@ -19,7 +19,6 @@ import {
 import { Check } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { useLocale } from '@/contexts/LocaleContext';
-import { portfolioConfig } from '@/config';
 
 export default function PricingSection() {
   const { t } = useLocale();
@@ -57,7 +56,7 @@ export default function PricingSection() {
           </Typography>
 
           <Grid container spacing={4} justifyContent="center">
-            {portfolioConfig.pricing.map((plan, index) => (
+            {t.pricing.plans.map((plan, index) => (
               <Grid item xs={12} sm={6} md={4} key={plan.id}>
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}

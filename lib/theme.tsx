@@ -1,23 +1,22 @@
 'use client';
 
 import { createTheme, ThemeOptions } from '@mui/material/styles';
-import { portfolioConfig } from '@/config';
 
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: portfolioConfig.theme.light.primary,
+      main: '#1976d2',
     },
     secondary: {
-      main: portfolioConfig.theme.light.secondary,
+      main: '#dc004e',
     },
     background: {
-      default: portfolioConfig.theme.light.background,
+      default: '#ffffff',
       paper: '#f5f5f5',
     },
     text: {
-      primary: portfolioConfig.theme.light.text,
+      primary: '#000000',
     },
   },
   typography: {
@@ -80,17 +79,17 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: portfolioConfig.theme.dark.primary,
+      main: '#90caf9',
     },
     secondary: {
-      main: portfolioConfig.theme.dark.secondary,
+      main: '#f48fb1',
     },
     background: {
-      default: portfolioConfig.theme.dark.background,
+      default: '#121212',
       paper: '#1e1e1e',
     },
     text: {
-      primary: portfolioConfig.theme.dark.text,
+      primary: '#ffffff',
     },
   },
   typography: {
