@@ -8,15 +8,17 @@ import { useEffect } from 'react';
  */
 export default function ErrorSuppressor() {
   useEffect(() => {
-    // Suppress React DevTools semver error (known issue with React 19)
+    // Additional layer of error suppression for React DevTools semver error
     const handleError = (event: ErrorEvent) => {
-      const errorMessage = event.message || '';
+      const errorMessage = event.message || event.error?.message || '';
       if (
         errorMessage.includes('Invalid argument not valid semver') ||
-        errorMessage.includes('react_devtools_backend_compact')
+        errorMessage.includes('react_devtools_backend_compact') ||
+        errorMessage.includes('react_devtools_backend')
       ) {
         event.preventDefault();
         event.stopPropagation();
+        event.stopImmediatePropagation();
         return false;
       }
     };
@@ -28,13 +30,29 @@ export default function ErrorSuppressor() {
         errorMessage.includes('react_devtools_backend')
       ) {
         event.preventDefault();
+        event.stopPropagation();
       }
+    };
+
+    // Override console.error as additional safeguard
+    const originalConsoleError = console.error;
+    console.error = (...args: any[]) => {
+      const errorMessage = args[0]?.toString() || '';
+      if (
+        errorMessage.includes('Invalid argument not valid semver') ||
+        errorMessage.includes('react_devtools_backend_compact') ||
+        errorMessage.includes('react_devtools_backend')
+      ) {
+        return; // Suppress this error
+      }
+      originalConsoleError.apply(console, args);
     };
 
     window.addEventListener('error', handleError, true);
     window.addEventListener('unhandledrejection', handleUnhandledRejection);
 
     return () => {
+      console.error = originalConsoleError;
       window.removeEventListener('error', handleError, true);
       window.removeEventListener('unhandledrejection', handleUnhandledRejection);
     };
