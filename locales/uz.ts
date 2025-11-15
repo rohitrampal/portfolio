@@ -16,7 +16,7 @@ export const uz: LocaleData = {
     contact: 'Aloqa',
   },
   home: {
-    name: '',
+    name: 'FreshDev',
     tagline: 'To\'liq-Stack Dasturchi va Raqamli Innovator',
     role: 'Katta Dastur Muhandisi',
     description: 'Butun dunyo bo\'ylab ish imkoniyatlari uchun ochiq. Iz qoldiradigan silliq, intuitiv va o\'ylangan raqamli tajribalarni yaratishga ishtiyoqli.',

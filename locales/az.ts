@@ -16,7 +16,7 @@ export const az: LocaleData = {
     contact: 'Əlaqə',
   },
   home: {
-    name: '',
+    name: 'FreshDev',
     tagline: 'Full-Stack Developer və Rəqəmsal İnnovator',
     role: 'Baş Proqram Mühəndisi',
     description: 'Dünya üzrə iş imkanları üçün açıq. İz buraxan cilalanmış, intuitiv və düşünülmüş rəqəmsal təcrübələr yaratmağa ehtiraslı.',

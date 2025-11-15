@@ -16,7 +16,7 @@ export const nl: LocaleData = {
     contact: 'Contact',
   },
   home: {
-    name: '',
+    name: 'FreshDev',
     tagline: 'Full-Stack Developer & Digitale Innovator',
     role: 'Senior Software Engineer',
     description: 'Open voor werkgelegenheidskansen wereldwijd. Gepassioneerd over het bouwen van gepolijste, intuïtieve en doordachte digitale ervaringen die een indruk achterlaten.',

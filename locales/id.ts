@@ -16,7 +16,7 @@ export const id: LocaleData = {
     contact: 'Hubungi Kami',
   },
   home: {
-    name: '',
+    name: 'FreshDev',
     tagline: 'Full-Stack Developer & Inovator Digital',
     role: 'Insinyur Perangkat Lunak Senior',
     description: 'Terbuka untuk peluang kerja di seluruh dunia. Bersemangat dalam membangun pengalaman digital yang halus, intuitif, dan penuh pertimbangan yang meninggalkan kesan.',

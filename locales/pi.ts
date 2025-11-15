@@ -16,7 +16,7 @@ export const pi: LocaleData = {
     contact: 'Sampayogo',
   },
   home: {
-    name: '',
+    name: 'FreshDev',
     tagline: 'Pūra-Stack Nirmātā ca Digital Navakārako',
     role: 'Uttama Software Engineer',
     description: 'Lokassa kammāvakāsānaṃ vivatam. Poliṣṭa, sahavijānanaṃ ca cintitaṃ digital anubhavāni nirmāṇe ussāho yattha chāpaṃ chaḍḍeti.',

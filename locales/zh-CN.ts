@@ -16,7 +16,7 @@ export const zhCN: LocaleData = {
     contact: '联系我们',
   },
   home: {
-    name: '',
+    name: 'FreshDev',
     tagline: '全栈开发者和数字创新者',
     role: '高级软件工程师',
     description: '面向全球工作机会开放。热衷于构建精致、直观且深思熟虑的数字体验，留下深刻印象。',

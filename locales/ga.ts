@@ -16,7 +16,7 @@ export const ga: LocaleData = {
     contact: 'Teagmháil',
   },
   home: {
-    name: '',
+    name: 'FreshDev',
     tagline: 'Forbróir Lán-Staice & Nuálaí Digiteach',
     role: 'Innealtóir Bogearraí Sinsearach',
     description: 'Oscailte do dheiseanna fostaíochta ar fud an domhain. Paiseanach faoi thaithí digiteacha snasta, iothuaithe agus smaointeacha a chruthú a fhágann lorg.',

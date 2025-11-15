@@ -16,7 +16,7 @@ export const la: LocaleData = {
     contact: 'Contactus',
   },
   home: {
-    name: '',
+    name: 'FreshDev',
     tagline: 'Plenus-Stack Developer & Digitalis Innovator',
     role: 'Senior Software Engineer',
     description: 'Apertus ad opportunitates laboris per orbem terrarum. Studiosus aedificandi politas, intuitivas et cogitativas experientias digitales quae signum relinquunt.',
