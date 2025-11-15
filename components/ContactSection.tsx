@@ -24,6 +24,7 @@ export default function ContactSection() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -65,19 +66,31 @@ export default function ContactSection() {
       return;
     }
 
-    // Simulate API call
+    setLoading(true);
     try {
-      // In a real app, you would call your API here
-      // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) });
-      
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
       setSuccess(true);
       setOpen(true);
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('Error submitting form:', error);
       setSuccess(false);
       setOpen(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -161,8 +174,9 @@ export default function ContactSection() {
                   variant="contained"
                   size="large"
                   sx={{ px: 4 }}
+                  disabled={loading}
                 >
-                  {t.contact.send}
+                  {loading ? t.contact.sending : t.contact.send}
                 </Button>
               </Box>
             </form>

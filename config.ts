@@ -98,7 +98,7 @@ export const portfolioConfig: PortfolioConfig = {
     {
       id: "1",
       name: "Zaps Travel",
-      description: "A full-scale travel booking ecosystem enabling users to search, compare, and book flights and hotels in real time. The platform integrates secure payment gateways, third-party travel APIs, and dynamic pricing modules, offering a seamless booking experience with modern UI/UX and optimized backend workflows.",
+      description: "A full-scale travel booking ecosystem enabling users to search, compare, and book flights and hotels in real time. The platform integrates secure payment gateways, third-party travel APIs, and dynamic pricing modules, offering a seamless booking experience with modern UI/UX and optimized backend workflows. zpastravel.com",
       technologies: ["React", "Redux", "Node.js", "MongoDB", "Payment Integration", "Third-party APIs"],
     },
     {
@@ -123,7 +123,7 @@ export const portfolioConfig: PortfolioConfig = {
       id: "5",
       name: "Jua Hotel",
       description: "A modern and intuitive hotel booking platform designed for smooth reservation flow. It includes room availability management, user-friendly search filters, and interactive booking steps using modular UI components and custom React hooks for enhanced maintainability and performance.",
-      technologies: ["React", "Redux", "Custom Hooks"],
+      technologies: ["React", "Redux", "Custom Hooks", "Python", "Django"],
     },
     {
       id: "6",
@@ -265,9 +265,9 @@ export const portfolioConfig: PortfolioConfig = {
     }
   ],
   contact: {
-    email: "contact@portfolio.com",
-    phone: "+1 (555) 123-4567",
-    address: "123 Tech Street, San Francisco, CA 94105",
+    email: "rohitthakurldttechnology@gmail.com",
+    phone: "+91 9818000000",
+    address: "Chandigarh, India",
     social: {
       linkedin: "https://linkedin.com/in/amishajain14",
       github: "https://github.com/johndoe",

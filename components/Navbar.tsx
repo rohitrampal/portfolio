@@ -7,8 +7,6 @@ import {
   Button,
   IconButton,
   Box,
-  useScrollTrigger,
-  Slide,
   Menu,
   MenuItem,
 } from '@mui/material';
@@ -31,29 +29,59 @@ export default function Navbar() {
   const { locale, setLocale, t } = useLocale();
   const [activeSection, setActiveSection] = useState('home');
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-  });
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 100;
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 50);
 
-      for (const section of sections) {
+      // Get all sections and their positions
+      const sectionPositions = sections.map((section) => {
         const element = document.getElementById(section.id);
         if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section.id);
-            break;
-          }
+          const rect = element.getBoundingClientRect();
+          return {
+            id: section.id,
+            top: rect.top + window.scrollY,
+            bottom: rect.bottom + window.scrollY,
+            height: rect.height,
+          };
+        }
+        return null;
+      }).filter(Boolean) as Array<{ id: string; top: number; bottom: number; height: number }>;
+
+      // Determine active section based on scroll position
+      const scrollPosition = window.scrollY + 150; // Offset for navbar height
+
+      // Check if we're at the top of the page
+      if (scrollY < 100) {
+        setActiveSection('home');
+        return;
+      }
+
+      // Find the section that's currently in view
+      for (let i = sectionPositions.length - 1; i >= 0; i--) {
+        const section = sectionPositions[i];
+        if (scrollPosition >= section.top && scrollPosition < section.bottom) {
+          setActiveSection(section.id);
+          return;
+        }
+      }
+
+      // If scrolled past all sections, set the last one as active
+      if (sectionPositions.length > 0) {
+        const lastSection = sectionPositions[sectionPositions.length - 1];
+        if (scrollPosition >= lastSection.top) {
+          setActiveSection(lastSection.id);
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -85,34 +113,62 @@ export default function Navbar() {
   };
 
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      <AppBar
-        position="fixed"
-        sx={{
-          backgroundColor: (theme) =>
-            theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.9)' : 'rgba(255, 255, 255, 0.9)',
-          backdropFilter: 'blur(10px)',
-          boxShadow: trigger ? 2 : 0,
-        }}
-      >
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-            {sections.map((section) => (
-              <Button
-                key={section.id}
-                onClick={() => handleNavClick(section.id)}
-                sx={{
-                  color: activeSection === section.id ? 'primary.main' : 'text.primary',
-                  fontWeight: activeSection === section.id ? 600 : 400,
-                  '&:hover': {
-                    backgroundColor: 'transparent',
+    <AppBar
+      position="fixed"
+      sx={{
+        backgroundColor: (theme) =>
+          theme.palette.mode === 'dark' 
+            ? scrolled 
+              ? 'rgba(18, 18, 18, 0.95)' 
+              : 'rgba(18, 18, 18, 0.9)'
+            : scrolled
+              ? 'rgba(255, 255, 255, 0.95)'
+              : 'rgba(255, 255, 255, 0.9)',
+        backdropFilter: 'blur(20px)',
+        boxShadow: scrolled ? 4 : 1,
+        transition: 'all 0.3s ease',
+        zIndex: 1300,
+      }}
+    >
+      <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
+        <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+          {sections.map((section) => (
+            <Button
+              key={section.id}
+              onClick={() => handleNavClick(section.id)}
+              sx={{
+                color: activeSection === section.id ? 'primary.main' : 'text.primary',
+                fontWeight: activeSection === section.id ? 700 : 400,
+                fontSize: '0.95rem',
+                textTransform: 'none',
+                position: 'relative',
+                px: 2,
+                py: 1,
+                transition: 'all 0.3s ease',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: 0,
+                  left: '50%',
+                  transform: activeSection === section.id ? 'translateX(-50%) scaleX(1)' : 'translateX(-50%) scaleX(0)',
+                  width: '60%',
+                  height: '2px',
+                  backgroundColor: 'primary.main',
+                  transition: 'transform 0.3s ease',
+                },
+                '&:hover': {
+                  color: 'primary.main',
+                  backgroundColor: 'transparent',
+                  '&::after': {
+                    transform: 'translateX(-50%) scaleX(1)',
                   },
-                }}
-              >
-                {t.nav[section.key as keyof typeof t.nav]}
-              </Button>
-            ))}
-          </Box>
+                },
+              }}
+            >
+              {t.nav[section.key as keyof typeof t.nav]}
+            </Button>
+          ))}
+        </Box>
           <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', color: mode === 'dark' ? 'white' : 'black'   }}>
             <IconButton onClick={handleLanguageMenuOpen} color="inherit">
               <Language />
@@ -243,7 +299,6 @@ export default function Navbar() {
           </Box>
         </Toolbar>
       </AppBar>
-    </Slide>
   );
 }
 

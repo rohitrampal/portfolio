@@ -28,25 +28,25 @@ export const strings = {
 
   // Services Section
   services: {
-    title: 'What I Do /',
+    title: 'What We Do',
     subtitle: '(Services)',
-    intro: 'I specialize in building full-stack web applications that are fast, reliable, and user-friendly. With a solid foundation in both frontend and backend technologies, I help bring ideas to life whether it\'s for a business, a startup, or a product team.',
+    intro: 'We specialize in building full-stack web applications that are fast, reliable, and user-friendly. With a solid foundation in both frontend and backend technologies, we help bring ideas to life whether it\'s for a business, a startup, or a product team.',
     service1: {
       number: '01',
       title: 'Full-Stack Development',
-      description: 'From frontend interactions to backend APIs, I build complete web solutions. I work with modern stacks to deliver apps that are scalable, maintainable, and ready for real-world users.',
-      tech: ['React, Node.js, Express.js', 'REST APIs, Firebase, Docker', 'Git, GitHub, Postman'],
+      description: 'From frontend interactions to backend APIs, we build complete web solutions. We work with modern stacks to deliver apps that are scalable, maintainable, and ready for real-world users.',
+      tech: ['React, Node.js, Express.js, Next.js, Nest.js, FastAPI', 'REST APIs, Firebase, Docker', 'Git, GitHub, Postman'],
     },
     service2: {
       number: '02',
       title: 'UI/UX & Frontend',
-      description: 'Design is more than looks — it\'s about clarity and connection. I design and develop clean, responsive interfaces that feel intuitive across devices. My focus is on clarity, accessibility, and seamless user experiences.',
+      description: 'Design is more than looks — it\'s about clarity and connection. We design and develop clean, responsive interfaces that feel intuitive across devices. Our focus is on clarity, accessibility, and seamless user experiences.',
       tech: ['NextJs, TailwindCSS, GSAP', 'Figma to Code', 'HTML, CSS, JavaScript'],
     },
     service3: {
       number: '03',
       title: 'Optimization',
-      description: 'Beyond handling data, I\'m driven by the challenge of turning complex raw inputs into reliable, usable systems. I enjoy designing pipelines that power insights and apply core CS principles to build for scale, speed, and stability.',
+      description: 'Beyond handling data, we are driven by the challenge of turning complex raw inputs into reliable, usable systems. We enjoy designing pipelines that power insights and apply core CS principles to build for scale, speed, and stability.',
       tech: ['Data Structures & Algorithms', 'DBMS, OOP, OS Fundamentals', 'Data Pipelines, ETL, and Scalability'],
     },
   },
@@ -65,16 +65,16 @@ export const strings = {
     category2: 'Frameworks & Libraries',
     category3: 'Core CS Concepts',
     skillsList: {
-      languages: ['Python', 'SQL', 'C++', 'Java', 'TypeScript', 'JavaScript', 'Git', 'Postman', 'Docker', 'Firebase'],
-      frameworks: ['React', 'Node.js', 'Express.js', 'Flask', 'Bootstrap', 'jQuery', 'TailwindCSS', 'Framer Motion', 'GSAP'],
+      languages: ['Python', 'TypeScript', 'JavaScript', 'C', 'C++', 'Java'],
+      frameworks: ['React', 'Node.js', 'Express.js', 'Next.js', 'Nest.js', 'Django', 'FastAPI'],
       concepts: ['DSA', 'DBMS', 'OOP', 'Operating Systems', 'System Design'],
     },
   },
 
   // About Section
   about: {
-    title: 'About Me',
-    description: 'I\'m a software engineer driven by a passion for turning ideas into clean, intuitive digital experiences. I am a passionate Software Engineer with a knack for building full-stack web applications using modern technologies like Next.js and TailwindCSS. My journey in tech began with a curiosity for solving real-world problems through innovative solutions, which evolved into a love for crafting user-centric digital experiences. Beyond coding, I thrive in collaborative environments and enjoy tackling challenging problems with creative solutions. I aim to contribute to impactful projects that make a difference in users\' lives.',
+    title: 'About Us',
+    description: 'We are a software engineering team driven by a passion for turning ideas into clean, intuitive digital experiences. We are passionate Software Engineers with a knack for building full-stack web applications using modern technologies like Next.js and TailwindCSS. Our journey in tech began with a curiosity for solving real-world problems through innovative solutions, which evolved into a love for crafting user-centric digital experiences. Beyond coding, we thrive in collaborative environments and enjoy tackling challenging problems with creative solutions. We aim to contribute to impactful projects that make a difference in users\' lives.',
     ourValues: 'Our Values',
   },
 
@@ -120,8 +120,8 @@ export const strings = {
 
   // Footer
   footer: {
-    copyright: '© 2024 Portfolio. All rights reserved.',
-    builtWith: 'Built with Next.js & Material UI',
+    copyright: '© 2025 Portfolio. All rights reserved.',
+    // builtWith: 'Built with Next.js & Material UI',
   },
 };
 

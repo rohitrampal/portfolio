@@ -61,7 +61,8 @@ export default function SkillsSection() {
       id="skills"
       ref={sectionRef}
       sx={{
-        py: { xs: 10, md: 15 },
+        pt: { xs: 5, md: 5 },
+        pb: { xs: 10, md: 15 },
         position: 'relative',
         backgroundColor: (theme) =>
           theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.5)' : 'rgba(255, 255, 255, 0.5)',
