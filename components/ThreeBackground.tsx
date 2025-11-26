@@ -42,7 +42,7 @@ function AnimatedStars() {
 
 export default function ThreeBackground() {
   return (
-    <div className="fixed inset-0 -z-10">
+    <div className="fixed inset-0 -z-10 hidden lg:block">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <AnimatedStars />
       </Canvas>

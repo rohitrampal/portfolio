@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Box, Container, Typography, Button, Stack } from '@mui/material';
+import type { Theme } from '@mui/material/styles';
 import { useLocale } from '@/contexts/LocaleContext';
 import { gsap } from 'gsap';
 import ThreeBackground from './ThreeBackground';
@@ -74,7 +75,7 @@ export default function HomeSection() {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        background: (theme) =>
+        background: (theme: Theme) =>
           theme.palette.mode === 'dark'
             ? 'linear-gradient(135deg, #121212 0%, #1e1e1e 100%)'
             : 'linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%)',
@@ -87,7 +88,7 @@ export default function HomeSection() {
         boxSizing: 'border-box',
       }}
     >
-      <ThreeBackground />
+      {/* <ThreeBackground /> */}
       <Container 
         maxWidth="lg" 
         sx={{ 
@@ -123,7 +124,7 @@ export default function HomeSection() {
               boxSizing: 'border-box',
               whiteSpace: 'normal',
               px: { xs: 1, sm: 2, md: 0 },
-              background: (theme) =>
+              background: (theme: Theme) =>
                 theme.palette.mode === 'dark'
                   ? 'linear-gradient(135deg, #fff 0%, #90caf9 100%)'
                   : 'linear-gradient(135deg, #000 0%, #1976d2 100%)',
@@ -132,7 +133,7 @@ export default function HomeSection() {
               backgroundClip: 'text',
             }}
           >
-            {t.home.name.toUpperCase() || 'PORTFOLIO'}
+            {(t.home?.name || 'PORTFOLIO').toUpperCase()}
           </Typography>
 
           <Typography
@@ -173,7 +174,7 @@ export default function HomeSection() {
               wordBreak: 'break-word',
               overflowWrap: 'break-word',
               whiteSpace: 'normal',
-              textAlign: { xs: 'left', sm: 'center' },
+              textAlign: { xs: 'center', sm: 'center' },
               boxSizing: 'border-box',
             }}
           >
